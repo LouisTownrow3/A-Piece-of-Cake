@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Piece of Cake</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #ff6f61;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4c4c;
+        }
+        #tipBox {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffeceb;
+            border-left: 5px solid #ff6f61;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            padding: 8px;
+        }
+        li:hover {
+            background-color: #ffeceb;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        li img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ff6f61;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const tipBox = document.getElementById('tipBox');
+            const ingredients = document.querySelectorAll('ul li');
+            const bakingTips = [
+                "Always preheat your oven for even baking!",
+                "Measure ingredients accurately for the best results.",
+                "Use room temperature ingredients for smoother batter."
+            ];
+
+            surpriseBtn.addEventListener('click', function() {
+                const randomTip = bakingTips[Math.floor(Math.random() * bakingTips.length)];
+                tipBox.innerHTML = `${randomTip} <br><a href='https://youtu.be/R8l5yo02ySw?si=T5bDQx_0-BE5Ieut' target='_blank'>Watch a video tutorial here!</a>`;
+                tipBox.style.display = 'block';
+            });
+
+            ingredients.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.add('highlight');
+                    setTimeout(() => {
+                        item.classList.remove('highlight');
+                    }, 500);
+                    alert(`You selected: ${item.textContent}`);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to A Piece of Cake</h1>
+        <p>Your guide to baking the perfect cake!</p>
+    </header>
+
+    <div class="container">
+        <h2>How to Make a Delicious Cake</h2>
+        <img src="images/slice_of_cake.png" alt="A slice of cake">
+        <button id="surpriseBtn">Click for a Baking Tip!</button>
+        <div id="tipBox"></div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li><img src="images/flour.png" alt="Flour">2 cups all-purpose flour</li>
+            <li><img src="images/sugar.png" alt="Sugar">1 1/2 cups sugar</li>
+            <li><img src="images/butter.png" alt="Butter">1/2 cup butter</li>
+            <li><img src="images/milk.png" alt="Milk">1 cup milk</li>
+            <li><img src="images/eggs.png" alt="Eggs">2 eggs</li>
+            <li><img src="images/baking_powder.png" alt="Baking Powder">2 tsp baking powder</li>
+            <li><img src="images/vanilla.png" alt="Vanilla Extract">1 tsp vanilla extract</li>
+            <li><img src="images/salt.png" alt="Salt">Pinch of salt</li>
+        </ul>
+
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Preheat your oven to 350°F (175°C). Grease and flour a cake pan.</li>
+            <li>Cream the butter and sugar until light and fluffy.</li>
+            <li>Add eggs one at a time, beating well after each addition.</li>
+            <li>Mix in vanilla extract.</li>
+            <li>Sift together flour, baking powder, and salt.</li>
+            <li>Gradually add dry ingredients, alternating with milk.</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 A Piece of Cake. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
